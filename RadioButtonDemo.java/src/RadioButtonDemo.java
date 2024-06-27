@@ -1,15 +1,13 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.*;
 /**
  *
  * @author j
  */
 public class RadioButtonDemo extends JFrame
 implements ActionListener{
-    private static RadioButtonDemo RadioButtonDemo;
     
     JRadioButton birdButton,catButton,dogButton,pigButton,rabbitButton;
     ButtonGroup group;
@@ -17,6 +15,7 @@ implements ActionListener{
     
     public RadioButtonDemo(){
         setTitle("RadioButtonDemo");
+        setLayout(New BorderLayout());
         birdButton= new JRadioButtton("Bird");
         catButton= new JRadioButtton("cat");
         dogButton= new JRadioButtton("dog");
@@ -55,8 +54,7 @@ implements ActionListener{
     public void actionPerformed(ActionEvent e){
        JRadioButton source =(JRadioButton)e.getSource(); 
          String pet = source.getText();
-         JOptionpane.showMessageDialog(this,"You selected: " + pet); 
-        String imagePath = "images/" +pet.toLowerCase() + ".jpg";
+         JOptionpane.showMessageDialog(this,"You selected: " + pet);
          switch(pet){
              case "Bird":
                  imageLabel.setIcon(new ImageIcon("images/bird.jpg"));
@@ -76,7 +74,7 @@ implements ActionListener{
          }
     }
     public static void main(String[] args){
-        RadioButtonDemo = new RadioButtonDemo();
+    new RadioButtonDemo();
     }
 
         }
