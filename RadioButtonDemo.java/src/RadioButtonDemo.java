@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,9 +14,7 @@ implements ActionListener{
     JRadioButton birdButton,catButton,dogButton,pigButton,rabbitButton;
     ButtonGroup group;
     JLabel imageLabel;
-    private Object JOptionpane;
     
-    @SuppressWarnings("LeakingThisInConstructor")
     public RadioButtonDemo(){
         setTitle("RadioButtonDemo");
         birdButton= new JRadioButtton("Bird");
@@ -37,10 +36,17 @@ implements ActionListener{
         pigButton.addActionListener(this);
         rabbitButton.addActionListener(this);
         
-        imageLabel= new JLabel();
         JPanel panel = new JPanel();
-         add(panel, "North");
-         add(imageLabel,"Center");
+        panel.add(birdButton);
+        panel.add(catButton);
+        panel.add(dogButton);
+        panel.add(pigButton);
+        panel.add(rabbitButton);
+
+        lmageLabel = new JLabel();
+        imageLabel.setHorizontalAlignment(JLabel.CENTER);
+         add(panel, BorderLayout.NORTH);
+         add(imageLabel,BorderLayout.CENTER);
          setSize(300, 300);
          setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
          setVisible(true);
@@ -49,7 +55,8 @@ implements ActionListener{
     public void actionPerformed(ActionEvent e){
        JRadioButton source =(JRadioButton)e.getSource(); 
          String pet = source.getText();
-         JOptionpane.showMessageDialog(this,"You selected: " + pet);
+         JOptionpane.showMessageDialog(this,"You selected: " + pet); 
+        String imagePath = "images/" +pet.toLowerCase() + ".jpg";
          switch(pet){
              case "Bird":
                  imageLabel.setIcon(new ImageIcon("images/bird.jpg"));
